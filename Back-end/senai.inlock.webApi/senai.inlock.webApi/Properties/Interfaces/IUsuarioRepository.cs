@@ -18,6 +18,6 @@ namespace senai.inlock.webApi.Interfaces
         /// <param name="senha"></param>
         /// <returns>Um objeto que foi buscado</returns>
 
-        UsuarioDomain BuscarPorEmailSenha(string email, string senha);
+        UsuarioDomain Login(string email, string senha);
     }
 }

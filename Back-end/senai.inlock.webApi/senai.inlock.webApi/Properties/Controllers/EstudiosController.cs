@@ -16,19 +16,25 @@ namespace senai.inlock.webApi.Properties.Controllers
     [ApiController]
     public class EstudiosController : ControllerBase
     {
-        private IEstudioRepository _EstudioRepository { get; set; }
+        private IEstudioRepository _estudioRepository { get; set; }
 
+        
         public EstudiosController()
         {
-            _EstudioRepository = new EstudioRepository();
+            _estudioRepository = new EstudioRepository();
         }
 
-        [HttpGet]
+        [HttpGet("Jogos")]
         public IActionResult Get()
         {
-            List<EstudioDomain> listaEstudios = _EstudioRepository.ListarTodos();
-
-            return Ok(listaEstudios);
+            try
+            {
+                return Ok(_estudioRepository.ListarComJogos());
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
         }
     }
 }

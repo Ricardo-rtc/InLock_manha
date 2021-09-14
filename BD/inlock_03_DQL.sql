@@ -39,3 +39,4 @@ FROM Estudio
 WHERE idEstudio = '1';
 GO
 
+SELECT idJogo, nomeJogo, descricao, dataLancamento, valor FROM Jogos WHERE idEstudio = 1

@@ -16,7 +16,7 @@ idEstudio INT FOREIGN KEY REFERENCES Estudio(idEstudio),
 nomeJogo VARCHAR(100),
 descricao VARCHAR(500),
 dataLancamento Date,
-valor Float,
+valor decimal,
 );
 GO
 

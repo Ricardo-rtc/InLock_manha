@@ -16,10 +16,10 @@ namespace senai.inlock.webApi.Properties.Repositories
         //inital catalog = nome do arquivo a ser lido
         //user Id=UsuariodoSql; pwd=senhaSql";
         // user Id=sa; pwd=senai@132
-        private string stringConexao = "Data Source=DESKTOP-C8POL51\\SQLSERVEREXPRESS; initial catalog=inlock_games_manha; user Id=sa; pwd=senai@132";
-        
+        private readonly string stringConexao = "Data Source=NOTE0113E5\\SQLEXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=Senai@132";
 
-        public List<EstudioDomain> ListarTodosComJogos()
+        
+        public List<EstudioDomain> ListarComJogos()
         {
             List<EstudioDomain> listaEstudios = new List<EstudioDomain>();
 
@@ -52,13 +52,13 @@ namespace senai.inlock.webApi.Properties.Repositories
 
                         using (SqlConnection conGames = new SqlConnection(stringConexao))
                         {
-                            string querySelectAllGames = "SELECT idJogo, nomeJogo, descricao, dataLancamento, valor FROM jogo WHERE idEstudio = @idEstudio";
+                            string querySelectAllGames = "SELECT idJogo, nomeJogo, descricao, dataLancamento, valor FROM Jogos WHERE idEstudio = @idEstudio";
 
                             conGames.Open();
 
                             SqlDataReader rdrGames;
 
-                            using (SqlCommand cmdGames = new SqlConnection(querySelectAllGames, conGames))
+                            using (SqlCommand cmdGames = new SqlCommand(querySelectAllGames, conGames))
                             {
                                 cmdGames.Parameters.AddWithValue("@idEstudio", estudio.idEstudio);
                                 rdrGames = cmdGames.ExecuteReader();

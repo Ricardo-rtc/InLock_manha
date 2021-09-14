@@ -15,7 +15,7 @@ namespace senai.inlock.webApi.Interfaces
         /// Retorna todos os Estudios
         /// </summary>
         /// <returns>Uma lista de estúdios</returns>
-        List<EstudioDomain> ListarTodosComJogos();
+        List<EstudioDomain> ListarComJogos();
 
        
     }

@@ -20,9 +20,9 @@ namespace senai.inlock.webApi.Interfaces
         /// <summary>
         /// Busca um jogo pelo id
         /// </summary>
-        /// <param name="idJogo"></param>
+        /// <param name="id"></param>
         /// <returns>Um objeto do tipo JogoDomain que foi buscado</returns>
-        JogoDomain BuscarPorId(int idJogo);
+        JogoDomain BuscarPorId(int id);
 
         /// <summary>
         /// Cadastra um novojogo
@@ -31,25 +31,20 @@ namespace senai.inlock.webApi.Interfaces
 
         void Cadastrar(JogoDomain novoJogo);
 
-        /// <summary>
-        /// Atualiza um Jogo existente passando o id pelo corpo da requisição
-        /// </summary>
-        /// <param name="jogoAtualizado"></param>
-        /// ex: http://localhost:5000/api/jogos
-        void AtualizarIdCorpo(JogoDomain jogoAtualizado);
+       
 
         /// <summary>
         /// Atualiza um Jogo existente passando o id pela URL da requisição
         /// </summary>
-        /// <param name="idJogo">id do jogo que será atualizado</param>
+        /// <param name="id">id do jogo que será atualizado</param>
         /// <param name="jogoAtualizado">Objeto jogoAtualizado com os novos dados</param>
         /// ex: http://localhost:5000/api/Jogo/4
-        void AtualizarIdUrl(int idJogo, JogoDomain jogoAtualizado);
+        void Atualizar(int id, JogoDomain jogoAtualizado);
 
         /// <summary>
         /// Deleta um jogo
         /// </summary>
-        /// <param name="idJogo">id do jogo que será deletado</param>
-        void Deletar(int idJogo);
+        /// <param name="id">id do jogo que será deletado</param>
+        void Deletar(int id);
     }
 }
