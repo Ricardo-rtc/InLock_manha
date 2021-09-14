@@ -15,33 +15,11 @@ namespace senai.inlock.webApi.Properties.Repositories
         //Data source = Conexão do Pc
         //inital catalog = nome do arquivo a ser lido
         //user Id=UsuariodoSql; pwd=senhaSql";
-        private string stringConexao = "Data Source=NOTE0113E5\\SQLEXPRESS; initial catalog=inlock_games_manha; user Id=sa; pwd=Senai@132";
-        public void AtualizarIdCorpo(EstudioDomain estudioAtualizado)
-        {
-            throw new NotImplementedException();
-        }
+        // user Id=sa; pwd=senai@132
+        private string stringConexao = "Data Source=DESKTOP-C8POL51\\SQLSERVEREXPRESS; initial catalog=inlock_games_manha; user Id=sa; pwd=senai@132";
+        
 
-        public void AtualizarIdUrl(int idEstudio, EstudioDomain estudioAtualizado)
-        {
-            throw new NotImplementedException();
-        }
-
-        public EstudioDomain BuscarPorId(int idEstudio)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Cadastrar(EstudioDomain novoEstudio)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Deletar(int idEstudio)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<EstudioDomain> ListarTodos()
+        public List<EstudioDomain> ListarTodosComJogos()
         {
             List<EstudioDomain> listaEstudios = new List<EstudioDomain>();
 
@@ -64,17 +42,53 @@ namespace senai.inlock.webApi.Properties.Repositories
 
                     while(rdr.Read())
                     {
+                        List<JogoDomain> listaJogos = new List<JogoDomain>();
+
                         EstudioDomain estudio = new EstudioDomain()
                         {
                             idEstudio = Convert.ToInt32(rdr[0]),
                             nomeEstudio = rdr[1].ToString()
                         };
 
-                        listaEstudios.Add(estudio);
+                        using (SqlConnection conGames = new SqlConnection(stringConexao))
+                        {
+                            string querySelectAllGames = "SELECT idJogo, nomeJogo, descricao, dataLancamento, valor FROM jogo WHERE idEstudio = @idEstudio";
 
+                            conGames.Open();
+
+                            SqlDataReader rdrGames;
+
+                            using (SqlCommand cmdGames = new SqlConnection(querySelectAllGames, conGames))
+                            {
+                                cmdGames.Parameters.AddWithValue("@idEstudio", estudio.idEstudio);
+                                rdrGames = cmdGames.ExecuteReader();
+
+                                while (rdrGames.Read())
+                                {
+                                    JogoDomain jogo = new JogoDomain()
+                                    {
+                                        idJogo = Convert.ToInt32(rdrGames[0]),
+
+                                        nomeJogo = rdrGames[1].ToString(),
+
+                                        descricao = rdrGames[2].ToString(),
+
+                                        dataLancamento = Convert.ToDateTime(rdrGames[3]),
+
+                                        valor = Convert.ToDecimal(rdrGames[4])
+                                    };
+
+                                    listaJogos.Add(jogo);
+
+                                }
+                            }
+
+                            estudio.ListaJogos = listaJogos;
+                            listaEstudios.Add(estudio);
+                        }
                     }
                 }
-            };
+            }
             return listaEstudios;
         }
     }
