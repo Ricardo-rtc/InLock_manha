@@ -16,9 +16,11 @@ namespace senai.inlock.webApi.Properties.Repositories
         //inital catalog = nome do arquivo a ser lido
         //user Id=UsuariodoSql; pwd=senhaSql";
         // user Id=sa; pwd=senai@132
-        private readonly string stringConexao = "Data Source=NOTE0113E5\\SQLEXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=Senai@132";
+        private readonly string stringConexao = "Data Source=DESKTOP-7KLLDB1\\SQLEXPRESS; initial catalog = inlock_games_manha; user Id = cardoso; pwd=Senai@132";
 
-        
+        //Conexão pc do cardoso DESKTOP-7KLLDB1
+
+
         public List<EstudioDomain> ListarComJogos()
         {
             List<EstudioDomain> listaEstudios = new List<EstudioDomain>();

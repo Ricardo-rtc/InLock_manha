@@ -13,7 +13,9 @@ namespace senai.inlock.webApi.Properties.Controllers
     [Produces("application/json")]
 
     [Route("api/[controller]")]
+
     [ApiController]
+
     public class EstudiosController : ControllerBase
     {
         private IEstudioRepository _estudioRepository { get; set; }

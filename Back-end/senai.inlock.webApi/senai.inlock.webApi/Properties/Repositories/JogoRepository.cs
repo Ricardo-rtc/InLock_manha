@@ -15,7 +15,7 @@ namespace senai.inlock.webApi.Properties.Repositories
        
         //inital catalog = nome do arquivo a ser lido
         //user Id=UsuariodoSql; pwd=senhaSql";
-        private string stringConexao = "Data Source=NOTE0113E5\\SQLEXPRESS; initial catalog=inlock_games_manha; user Id=sa; pwd=Senai@132";
+        private string stringConexao = "Data Source=DESKTOP-7KLLDB1\\SQLEXPRESS; initial catalog=inlock_games_manha; user Id=cardoso; pwd=Senai@132";
 
 
 
