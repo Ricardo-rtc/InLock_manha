@@ -27,7 +27,7 @@ namespace senai.inlock.webApi.Properties.Controllers
         {
             _usuarioRepository = new UsuarioRepository();
         }
-        [HtppPost("Login")]
+        [HttpPost("Login")]
 
         public IActionResult Login(UsuarioDomain login)
         {

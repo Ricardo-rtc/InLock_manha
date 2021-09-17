@@ -19,7 +19,8 @@ namespace senai.inlock.webApi.Properties.Repositories
         // USER CARDOSO private readonly string stringConexao = "Data Source=DESKTOP-7KLLDB1\\SQLEXPRESS; initial catalog = inlock_games_manha; user Id = cardoso; pwd=Senai@132"
         //Conexão pc do cardoso DESKTOP-7KLLDB1
 
-        private readonly string stringConexao = "Data Source=NOTE0113E3\\SQLEXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=Senai@132";
+        //private readonly string stringConexao = "Data Source=NOTE0113E3\\SQLEXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=Senai@132";
+        private readonly string stringConexao = "Data Source=DESKTOP-C8POL51\\SQLSERVEREXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=senai@132";
 
         public List<EstudioDomain> ListarComJogos()
         {

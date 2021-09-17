@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>senai.inlock.webApi</name>
+    </assembly>
+    <members>
+        <member name="M:senai.inlock.webApi.Properties.Controllers.JogosController.Cadastrar(senai.inlock.webApi.Domains.JogoDomain)">
+            <summary>
+            Cadastra um novo jogo
+            </summary>
+            <param name="novoJogo">Objeto novoJogo com as informações</param>
+            <returns>Retorna um status code 201 -Created</returns>
+        </member>
+        <member name="T:senai.inlock.webApi.Properties.Repositories.UsuarioRepository">
+            <summary>
+            Classe responsável pelo repositório dos usuários 
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi.Domains.EstudioDomain">
+            <summary>
+            Classe que representa a tabela de Estudio
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi.Domains.JogoDomain">
+            <summary>
+            Classe que representa a tabela de Jogo
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi.Domains.TipoUsuarioDomain">
+            <summary>
+            Classe que representa a tabela de TipoUsuario
+            </summary>
+        </member>
+        <member name="P:senai.inlock.webApi.Domains.UsuarioDomain.idUsuario">
+            <summary>
+            Classe que representa a tabela de Usuario
+            </summary>
+        </member>
+        <member name="T:senai.inlock.webApi.Interfaces.IEstudioRepository">
+            <summary>
+            Interface responsável pelo EstudioRepository
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IEstudioRepository.ListarComJogos">
+            <summary>
+            Retorna todos os Estudios
+            </summary>
+            <returns>Uma lista de estúdios</returns>
+        </member>
+        <member name="T:senai.inlock.webApi.Interfaces.IJogoRepository">
+            <summary>
+            Interface responsável pelo JogoRepository
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.ListarTodos">
+            <summary>
+            Retorna todos os Jogos
+            </summary>
+            <returns>Uma lista de jogos</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um jogo pelo id
+            </summary>
+            <param name="id"></param>
+            <returns>Um objeto do tipo JogoDomain que foi buscado</returns>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.Cadastrar(senai.inlock.webApi.Domains.JogoDomain)">
+            <summary>
+            Cadastra um novojogo
+            </summary>
+            <param name="novoJogo">Cadastra um novo jogo</param>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.Atualizar(System.Int32,senai.inlock.webApi.Domains.JogoDomain)">
+            <summary>
+            Atualiza um Jogo existente passando o id pela URL da requisição
+            </summary>
+            <param name="id">id do jogo que será atualizado</param>
+            <param name="jogoAtualizado">Objeto jogoAtualizado com os novos dados</param>
+            ex: http://localhost:5000/api/Jogo/4
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IJogoRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um jogo
+            </summary>
+            <param name="id">id do jogo que será deletado</param>
+        </member>
+        <member name="T:senai.inlock.webApi.Interfaces.IUsuarioRepository">
+            <summary>
+            Interface responsável pelo repositótrio UsuarioRepository
+            </summary>
+        </member>
+        <member name="M:senai.inlock.webApi.Interfaces.IUsuarioRepository.Login(System.String,System.String)">
+            <summary>
+            Validagem do Usuario
+            </summary>
+            <param name="email"></param>
+            <param name="senha"></param>
+            <returns>Um objeto que foi buscado</returns>
+        </member>
+    </members>
+</doc>
