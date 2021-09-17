@@ -16,9 +16,9 @@ namespace senai.inlock.webApi.Properties.Repositories
         //inital catalog = nome do arquivo a ser lido
         //user Id=UsuariodoSql; pwd=senhaSql";
         // User CARDOSO private string stringConexao = "Data Source=DESKTOP-7KLLDB1\\SQLEXPRESS; initial catalog=inlock_games_manha; user Id=cardoso; pwd=Senai@132";
-        //private string stringConexao = "Data Source=NOTE0113E3\\SQLEXPRESS; initial catalog=inlock_games_manha; user Id=sa; pwd=Senai@132";
+        private string stringConexao = "Data Source=NOTE0113E3\\SQLEXPRESS; initial catalog=inlock_games_manha; user Id=sa; pwd=Senai@132";
 
-        private readonly string stringConexao = "Data Source=DESKTOP-C8POL51\\SQLSERVEREXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=senai@132";
+        //private readonly string stringConexao = "Data Source=DESKTOP-C8POL51\\SQLSERVEREXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=senai@132";
 
         public void Atualizar(int id, JogoDomain jogoAtualizado)
         {
@@ -29,7 +29,7 @@ namespace senai.inlock.webApi.Properties.Repositories
         {
             throw new NotImplementedException();
         }
-
+        
         public void Cadastrar(JogoDomain novoJogo)
         {
            

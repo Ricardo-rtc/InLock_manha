@@ -40,24 +40,28 @@ namespace senai.inlock.webApi.Properties.Controllers
             }
 
             var claims = new[]
-
             {
+                // Formato da Claim = TipoDaClaim, ValorDaClaim
                 new Claim(JwtRegisteredClaimNames.Email, usuarioBuscado.email),
                 new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.idUsuario.ToString()),
-                new Claim(ClaimTypes.Role, usuarioBuscado.idTipoUsuario.ToString()),
+                new Claim(ClaimTypes.Role, usuarioBuscado.tipoUsuario.titulo.ToString())
             };
 
+            // Define a chave de acesso ao token
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("inlock-chave-autenticacao"));
 
+            // Define as credenciais do token - Header
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            // Gerar o token
             var token = new JwtSecurityToken(
-                issuer: "inLock.webAPI",
-                audience: "inLock.webAPI",
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(45),
-                signingCredentials: creds
+                issuer: "inlock.webApi",                // emissor do token
+                audience: "inlock.webApi",              // destinatário do token
+                claims: claims,                         // dados definidos acima (linha 59)
+                expires: DateTime.Now.AddMinutes(30),   // tempo de expiração
+                signingCredentials: creds               // credenciais do token
             );
+
 
             return Ok(new
             {

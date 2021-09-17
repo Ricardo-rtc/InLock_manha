@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interfaces;
@@ -17,6 +18,8 @@ namespace senai.inlock.webApi.Properties.Controllers
     [ApiController]
 
     //Adicionar o [Authorize} aqui para apenas usuarios com autenticação acessar os métodos 
+    [Authorize]
+
     public class JogosController : ControllerBase
     {
         private IJogoRepository _jogoRepository { get; set; }
@@ -37,14 +40,14 @@ namespace senai.inlock.webApi.Properties.Controllers
                 return BadRequest(ex);
             }
         }
-            ///<summary>
-            ///Cadastra um novo jogo
-            ///</summary>
-            ///<param name="novoJogo">Objeto novoJogo com as informações</param>
-            ///<returns>Retorna um status code 201 -Created</returns>
-            
-            //[Authorize(Roles = "1")]
-            [HttpPost]
+        ///<summary>
+        ///Cadastra um novo jogo
+        ///</summary>
+        ///<param name="novoJogo">Objeto novoJogo com as informações</param>
+        ///<returns>Retorna um status code 201 -Created</returns>
+
+        [Authorize(Roles = "ADMINISTRADOR")]
+        [HttpPost]
             public IActionResult Cadastrar(JogoDomain novoJogo)
             {
                 try

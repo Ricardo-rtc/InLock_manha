@@ -42,23 +42,31 @@ namespace senai.inlock.webApi
                     options.DefaultChallengeScheme = "JwtBearer";
                 })
 
+                // Define os parâmetros de validação do token
                 .AddJwtBearer("JwtBearer", options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
                     {
+                        // Valida quem está solicitando
                         ValidateIssuer = true,
 
+                        // Valida quem está recebendo
                         ValidateAudience = true,
 
+                        // Define se o tempo de expiração será validado
                         ValidateLifetime = true,
 
+                        // Forma de criptografia e ainda valida a chave de autenticação
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("inlock-chave-autenticacao")),
 
+                        // Valida o tempo de expiração do token
                         ClockSkew = TimeSpan.FromMinutes(30),
 
-                        ValidIssuer = "inLock.webAPI",
+                        // Nome do issuer, de onde está vindo
+                        ValidIssuer = "inlock.webApi",
 
-                        ValidAudience = "inLock.webAPI"
+                        // Nome do audience, para onde está indo
+                        ValidAudience = "inlock.webApi"
                     };
                 });
         }
@@ -71,18 +79,28 @@ namespace senai.inlock.webApi
                 app.UseDeveloperExceptionPage();
             }
 
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "inLock.webAPI");
-                    c.RoutePrefix = string.Empty;
-                });
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "inLock.webAPI");
+                c.RoutePrefix = string.Empty;
+            });
 
             app.UseRouting();
 
+            // Habilita a autenticação
+            app.UseAuthentication();
+
+            // Habilita a autorização
+            app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
+                // Define o mapeamento dos Controllers
                 endpoints.MapControllers();
             });
         }

@@ -14,13 +14,9 @@ namespace senai.inlock.webApi.Properties.Repositories
     public class UsuarioRepository : IUsuarioRepository
     {
 
-        //private string stringConexao = "Data Source= NOTE0113E5; initial catalog=inlock_games_manha; user Id=sa; pwd=Senai@132";
-        private readonly string stringConexao = "Data Source=DESKTOP-C8POL51\\SQLSERVEREXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=senai@132";
+        private string stringConexao = "Data Source= NOTE0113E3\\SQLEXPRESS; initial catalog=inlock_games_manha; user Id=sa; pwd=Senai@132";
+        //private readonly string stringConexao = "Data Source=DESKTOP-C8POL51\\SQLSERVEREXPRESS; initial catalog = inlock_games_manha; user Id = sa; pwd=senai@132";
 
-        public UsuarioDomain BuscarPorEmailSenha(string email, string senha)
-        {
-            throw new NotImplementedException();
-        }
 
         public UsuarioDomain Login(string email, string senha)
         {

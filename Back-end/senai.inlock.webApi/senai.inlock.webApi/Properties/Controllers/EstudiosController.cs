@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai.inlock.webApi.Domains;
 using senai.inlock.webApi.Interfaces;
@@ -16,6 +17,8 @@ namespace senai.inlock.webApi.Properties.Controllers
 
     [ApiController]
 
+    [Authorize]
+
     public class EstudiosController : ControllerBase
     {
         private IEstudioRepository _estudioRepository { get; set; }
@@ -26,6 +29,7 @@ namespace senai.inlock.webApi.Properties.Controllers
             _estudioRepository = new EstudioRepository();
         }
 
+        [Authorize (Roles = "ADMINISTRADOR")]
         [HttpGet("Jogos")]
         public IActionResult Get()
         {
